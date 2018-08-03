@@ -25,7 +25,7 @@ class Button extends Component {
 		return(
 			<a id="download" download="canvas.png">
 			<div className="buttonContainer" onClick={this.onClick.bind(this)}>
-				Hello
+				Download image
 			</div>
 			</a>
 		)

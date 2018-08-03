@@ -8,18 +8,33 @@ import './style.css'
 class Canvas extends Component {
 
 	componentDidMount(){
+
 		this.props.setCanvasContext({
 			context: this.refs.canvas.getContext('2d'),
 			doc: this.refs.canvas
 		})
 	}
 
+	componentWillReceiveProps(np){
+		this.forceUpdate()
+		console.log(this.props)
+		if (np.width !== this.props.width || np.height !== this.props.height){
+			this.props.setCanvasContext({
+			context: this.refs.canvas.getContext('2d'),
+			doc: this.refs.canvas
+		})
+		}
+	}
+
 
 
 	render(){
+		console.log(this.props.width, this.props.height)
 		return(
 			<div className="canvasContainer">
-				<canvas id="canvas" className="canvas"ref="canvas" width={this.props.size.width} height={this.props.size.height}/>
+				
+				<canvas id="canvas" className="canvas" ref="canvas" width={this.props.width} height={this.props.height}/>
+				
 			</div>
 		)
 	}
@@ -27,7 +42,8 @@ class Canvas extends Component {
 
 
 const mapStateToProps = state => ({
-  images: state.composition.images
+	width: state.canvas.width,
+	height:state.canvas.height,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -21,7 +21,8 @@ class ImageRail extends Component {
 
 	add(index){
 		// console.log(this.props)
-		if (this.props.canvasContext && this.props.canvasSize){
+		console.log(this.props.canvasContext)
+		if (this.props.canvasWidth > 10 && this.props.canvasHeight > 10 ){
 			this.addImage.call(this, this.props.images[index])
 		} else {
 			alert('Must select canvas size first')
@@ -34,7 +35,7 @@ class ImageRail extends Component {
 		img.src = url
 		img.crossOrigin="Anonymous" 
 		img.onload = () => {
-			this.props.canvasContext.drawImage(img, 0, 0, this.props.canvasSize.width, this.props.canvasSize.width * image.ratio);
+			this.props.canvasContext.drawImage(img, 0, 0, this.props.canvasWidth * image.ratio, this.props.canvasHeight );
 		}
 		img.onerror = (err) => {
 			console.log('error', err)
@@ -69,7 +70,9 @@ const mapStateToProps = state => ({
   images: state.composition.images,
   canvasContext: state.canvas.canvasContext,
   canvasDoc: state.canvas.canvasDoc,
-  canvasSize: state.canvas.canvasSizes[state.canvas.canvasSize]
+  // canvasSize: state.canvas.canvasSizes[state.canvas.canvasSize]
+  canvasWidth: state.canvas.width,
+  canvasHeight: state.canvas.height
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
