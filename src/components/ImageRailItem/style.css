@@ -1,0 +1,35 @@
+.ImageRailItemContainer{
+	position: relative;
+	height:100%;
+	margin:2px;
+	box-sizing: border-box;
+	img{
+		height:100%;
+	}
+	.selectOptionsContainer{
+		position: absolute;
+		bottom:0;
+		left:0;
+		height:100%;
+
+		width:100%;
+		background:#f7f7f7;
+		height:80px;
+		.optionContainer{
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding:2px;
+			width:100%;
+			height:50%;
+			border-top:1px solid #a6a6a6;
+			box-sizing:border-box;
+		}
+		:nth-child(1){
+			/* border:1px solid #a6a6a6; */
+			 border-bottom:none
+		}
+		
+	}
+}
